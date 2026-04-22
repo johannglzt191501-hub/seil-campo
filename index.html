@@ -1250,9 +1250,13 @@ function prevStep() {
 
 function renderStep() {
   const pasos = getPasos();
-  document.querySelectorAll('.step-content').forEach(el => el.classList.add('hidden'));
+  document.querySelectorAll('.step-content').forEach(el => {
+    el.style.display = 'none';
+  });
   const paso = pasos[currentStep];
-  document.getElementById(paso.id).classList.remove('hidden');
+  const el = document.getElementById(paso.id);
+  el.style.display = 'block';
+  el.classList.remove('hidden');
   document.getElementById('btn-back').classList.toggle('hidden', currentStep === 0);
   const btnNext = document.getElementById('btn-next');
 
